@@ -1,17 +1,17 @@
-﻿# Experiment Log
+﻿# 実験ログ
 
-Use this log to track experiments for reproducibility.
+再現性のため、ここに実験の記録を残してください。
 
-## Template
+## テンプレート
 
-- Date:
-- Experiment ID:
-- Purpose:
-- Config file:
-- Data source / universe:
-- Training period:
-- Validation / test period:
-- Metrics:
-- Notes:
+- 日付:
+- 実験ID:
+- 目的:
+- 設定ファイル:
+- データソース / 対象ユニバース:
+- 学習期間:
+- 検証 / テスト期間:
+- 指標:
+- メモ:
 
 ---

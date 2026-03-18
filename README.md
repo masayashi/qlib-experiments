@@ -1,8 +1,8 @@
-﻿# Qlib Experiment Project
+﻿# Qlib 実験プロジェクト
 
-This repo is for running and tracking experiments using the Qlib framework.
+このリポジトリは、Qlib を使った実験の実行と記録のための作業場所です。
 
-## Quick Start (Windows PowerShell)
+## クイックスタート（Windows PowerShell）
 
 ```powershell
 cd C:\home\github\qlib-experiments
@@ -10,20 +10,20 @@ cd C:\home\github\qlib-experiments
 python .\scripts\check_qlib.py
 ```
 
-## Suggested Layout
+## ディレクトリ構成
 
-- `experiments/` : Experiment config files (YAML/JSON)
-- `scripts/`     : Runner scripts and utilities
-- `results/`     : Output logs, metrics, plots
-- `docs/`        : Notes, references, experiment summaries
+- `experiments/` : 実験設定ファイル（YAML/JSON）
+- `scripts/`     : 実行スクリプト・ユーティリティ
+- `results/`     : 実行結果（ログ、指標、図など）
+- `docs/`        : メモ、参考、実験サマリ
 
-## First Experiment
+## 最初の実験
 
-- Start from `experiments/baseline.yaml`
-- Run your experiment script (placeholder in `scripts/run_experiment.py`)
-- Save outputs to `results/YYYYMMDD_expid/`
+- `experiments/baseline.yaml` を起点にする
+- 実験スクリプトを実行（`scripts/run_experiment.py` は現在プレースホルダ）
+- 出力は `results/YYYYMMDD_expid/` に保存する
 
-## Notes
+## メモ
 
-- Keep configuration files versioned for reproducibility.
-- Store large datasets outside Git and link them in docs.
+- 設定ファイルは必ずバージョン管理する（再現性のため）。
+- 大きなデータは Git 管理外に置き、必要に応じて `docs/` で参照する。
