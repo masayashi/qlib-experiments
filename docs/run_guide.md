@@ -25,7 +25,7 @@ python .\scripts\convert_csv_to_qlib.py
 
 `dump_bin.py` により、`~/.qlib/qlib_data/jp_data/instruments/all.txt` が生成されます。
 
-## 3. ルールベース戦略の実行
+## 3. ルールベース戦略の単体実行
 
 ```powershell
 python .\scripts\run_rule_backtest.py
@@ -39,19 +39,31 @@ python .\scripts\run_rule_backtest.py
 - `excess_return_without_cost.csv`
 - `excess_return_with_cost.csv`
 
-## 4. 学習モデルベース実験の実行（必要な場合）
+## 4. ルールベース戦略の比較実行（推奨）
+
+```powershell
+python .\scripts\run_rule_sweep.py
+```
+
+`results/rule_sweep_YYYYMMDD_HHMMSS/` に以下が出力されます。
+
+- `summary.md`
+- `sweep_results.csv`
+- 各ケースの `report_lb*_k*_d*.csv`
+
+## 5. 学習モデルベース実験の実行（必要な場合）
 
 ```powershell
 python .\scripts\run_experiment.py
 python .\scripts\export_report.py
 ```
 
-## 5. 結果の保存先
+## 6. 結果の保存先
 
 実行結果は Qlib のワークフロー管理下に保存されます。
 通常は `~/.qlib/qlib_data/.log` や `~/.qlib/` 配下の
 実験ディレクトリに保存されます。
 
-## 6. 記録
+## 7. 記録
 
 実験を回したら `docs/experiment_log.md` に記録してください。

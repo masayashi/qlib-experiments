@@ -17,6 +17,7 @@ python .\scripts\convert_csv_to_qlib.py
 
 ```powershell
 python .\scripts\run_rule_backtest.py
+python .\scripts\run_rule_sweep.py
 ```
 
 ## 学習モデルベース実験の実行
