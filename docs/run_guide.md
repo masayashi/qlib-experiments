@@ -32,13 +32,17 @@ python .\scripts\convert_csv_to_qlib.py
 python .\scripts\run_experiment.py
 ```
 
-## 4. レポート出力
+## 4. レポート出力（可視化付き）
 
 ```powershell
 python .\scripts\export_report.py
 ```
 
-`results/report_YYYYMMDD_HHMMSS/` にサマリが出力されます。
+`results/report_YYYYMMDD_HHMMSS/` に以下が出力されます。
+
+- `summary.md`
+- `cumulative_return.png`
+- `drawdown.png`
 
 ## 5. 結果の保存先
 
