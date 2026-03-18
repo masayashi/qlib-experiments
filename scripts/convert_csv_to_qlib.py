@@ -52,8 +52,6 @@ def main() -> None:
             "dump_bin.py not found. Clone Qlib repo and set QLIB_REPO to its path."
         )
 
-    repo_root = dump_bin.parent.parent
-
     csv_dir = Path(args.csv_dir).expanduser().resolve()
     qlib_dir = Path(args.qlib_dir).expanduser().resolve()
     qlib_dir.mkdir(parents=True, exist_ok=True)
@@ -68,12 +66,8 @@ def main() -> None:
         "--date_field_name=date",
     ]
 
-    env = os.environ.copy()
-    # Use Qlib source without compiling extensions
-    env["PYTHONPATH"] = str(repo_root)
-
     print("Running:", " ".join(cmd))
-    raise SystemExit(subprocess.call(cmd, env=env))
+    raise SystemExit(subprocess.call(cmd))
 
 
 if __name__ == "__main__":

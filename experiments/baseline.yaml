@@ -1,7 +1,7 @@
-﻿# Qlib baseline config for qrun
+# Qlib baseline config for qrun
 # Based on Qlib workflow config examples.
 
-qlib_data:
+qlib_init:
   provider_uri: "~/.qlib/qlib_data/jp_data"
   # Qlib officially supports region: cn/us. Use one and override trading settings for JP as needed.
   region: "cn"
@@ -11,40 +11,17 @@ benchmark: &benchmark 7203.T  # Set to a symbol present in your JP data
 
 # Data handler config
 handler_config: &handler_config
-  start_time: 2008-01-01
-  end_time: 2020-08-01
-  fit_start_time: 2008-01-01
-  fit_end_time: 2014-12-31
+  start_time: 2015-01-05
+  end_time: 2026-03-18
+  fit_start_time: 2015-01-05
+  fit_end_time: 2020-12-31
   instruments: *market
 
 # Dataset segments
 segments: &segments
-  train: [2008-01-01, 2014-12-31]
-  valid: [2015-01-01, 2016-12-31]
-  test: [2017-01-01, 2020-08-01]
-
-# Backtest settings
-backtest_config: &backtest_config
-  verbose: False
-  limit_threshold: 0.095  # TODO: adjust to JP market rules
-  account: 100000000
-  benchmark: *benchmark
-  deal_price: close
-  open_cost: 0.0005
-  close_cost: 0.0015
-  min_cost: 5
-
-# Port analysis config
-port_analysis_config: &port_analysis_config
-  strategy:
-    class: TopkDropoutStrategy
-    module_path: qlib.contrib.strategy.strategy
-    kwargs:
-      topk: 50
-      n_drop: 5
-      signal: <PRED>
-  backtest:
-    normal_backtest_args: *backtest_config
+  train: [2015-01-05, 2020-12-31]
+  valid: [2021-01-01, 2022-12-31]
+  test: [2023-01-01, 2026-03-18]
 
 # Main task
 
@@ -75,7 +52,3 @@ task:
     - class: SignalRecord
       module_path: qlib.workflow.record_temp
       kwargs: {}
-    - class: PortAnaRecord
-      module_path: qlib.workflow.record_temp
-      kwargs:
-        config: *port_analysis_config
