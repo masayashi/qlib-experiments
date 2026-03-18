@@ -2,12 +2,13 @@
 
 This repo is for running and tracking experiments using the Qlib framework.
 
-## Quick Start
+## Quick Start (Windows PowerShell)
 
-1. Create a Python virtual environment.
-2. Install dependencies from `requirements.txt`.
-3. Configure your experiment under `experiments/`.
-4. Run your experiment and save results under `results/`.
+```powershell
+cd C:\home\github\qlib-experiments
+.\scripts\setup_env.ps1
+python .\scripts\check_qlib.py
+```
 
 ## Suggested Layout
 
@@ -19,7 +20,7 @@ This repo is for running and tracking experiments using the Qlib framework.
 ## First Experiment
 
 - Start from `experiments/baseline.yaml`
-- Run your experiment script (to be added in `scripts/`)
+- Run your experiment script (placeholder in `scripts/run_experiment.py`)
 - Save outputs to `results/YYYYMMDD_expid/`
 
 ## Notes
