@@ -18,6 +18,9 @@ $env:QLIB_REPO = "C:\home\github\microsoft\qlib"
 python .\scripts\convert_csv_to_qlib.py
 ```
 
+`dump_bin.py` により、`~/.qlib/qlib_data/jp_data/instruments/all.txt` が生成されます。
+この `all` を `experiments/baseline.yaml` の `instruments` に指定しています。
+
 ## 3. Qlib の初期化
 
 Qlib は `qrun` 実行時に設定ファイルの `qlib_data` を読んで初期化されます。

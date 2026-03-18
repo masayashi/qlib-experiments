@@ -6,8 +6,8 @@ qlib_data:
   # Qlib officially supports region: cn/us. Use one and override trading settings for JP as needed.
   region: "cn"
 
-market: &market jp_topix
-benchmark: &benchmark TOPIX
+market: &market all
+benchmark: &benchmark 7203.T  # Set to a symbol present in your JP data
 
 # Data handler config
 handler_config: &handler_config
