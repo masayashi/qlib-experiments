@@ -2,11 +2,12 @@
 # Based on Qlib workflow config examples.
 
 qlib_data:
-  provider_uri: "~/.qlib/qlib_data/cn_data"
+  provider_uri: "~/.qlib/qlib_data/jp_data"
+  # Qlib officially supports region: cn/us. Use one and override trading settings for JP as needed.
   region: "cn"
 
-market: &market csi500
-benchmark: &benchmark SH000905
+market: &market jp_topix
+benchmark: &benchmark TOPIX
 
 # Data handler config
 handler_config: &handler_config
@@ -25,7 +26,7 @@ segments: &segments
 # Backtest settings
 backtest_config: &backtest_config
   verbose: False
-  limit_threshold: 0.095
+  limit_threshold: 0.095  # TODO: adjust to JP market rules
   account: 100000000
   benchmark: *benchmark
   deal_price: close

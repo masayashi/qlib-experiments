@@ -4,8 +4,8 @@
 
 ## 重要な注意
 
-- 公式のデータセットは一時的に無効化されている旨が公式リポジトリに記載されています。公開データで試す場合は、コミュニティ提供データの利用が案内されています。
-- 公開データは Yahoo Finance 由来であり、品質の保証はありません。高品質なデータがある場合はそちらの利用が推奨されています。
+- Qlib の公式ドキュメント上で、既定の地域設定は中国（CN）と米国（US）に対応しています。
+- 日本市場（JP）で利用する場合は、**自分でデータを用意し、Qlib形式に変換**して使う前提になります。
 
 ## 方式A: Qlib の取得スクリプトでダウンロード
 
@@ -40,6 +40,18 @@ python -m qlib.cli.data qlib_data --target_dir ~/.qlib/qlib_data/cn_data --regio
 python -m qlib.cli.data qlib_data --target_dir ~/.qlib/qlib_data/cn_data_1min --region cn --interval 1min
 ```
 
+## 日本市場（JP）で使う場合
+
+Qlib は既定で CN/US の地域設定を想定しています。そのため JP を使う場合は以下が必要です。
+
+1. **日本株データの取得**
+   - 例: JPX（J-Quants API / DataCube）などの公式データソース
+2. **Qlib形式への変換**
+   - Qlib のデータ形式に合わせて `~/.qlib/qlib_data/jp_data` に保存
+3. **設定の更新**
+   - `experiments/baseline.yaml` の `qlib_data.provider_uri` を JP データのパスに変更
+   - `market` / `benchmark` / `backtest_config` を JP 市場仕様に合わせて調整
+
 ## Qlib の初期化例
 
 データを配置したら、以下のように初期化します。
@@ -62,5 +74,5 @@ qlib.init(provider_uri='~/.qlib/qlib_data/us_data', region=REG_US)
 
 ## 参考
 
-- 公式リポジトリの「Data Preparation」セクション
-- Qlib のデータ関連ドキュメント
+- 公式ドキュメントの初期化と地域設定
+- JPX（J-Quants API / DataCube）
