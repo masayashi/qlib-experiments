@@ -10,9 +10,13 @@ cd C:\home\github\qlib-experiments
 python .\scripts\check_qlib.py
 ```
 
-## 2. データ準備
+## 2. データ準備（JP / yfinance）
 
-`docs/data_setup.md` を参照してデータを取得してください。
+```powershell
+python .\scripts\prepare_jp_data.py --tickers-file .\docs\jp_tickers.txt --start 2015-01-01
+$env:QLIB_REPO = "C:\home\github\microsoft\qlib"
+python .\scripts\convert_csv_to_qlib.py
+```
 
 ## 3. Qlib の初期化
 

@@ -4,3 +4,4 @@ qlib
 pandas
 numpy
 scikit-learn
+yfinance

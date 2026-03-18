@@ -8,6 +8,9 @@
 cd C:\home\github\qlib-experiments
 .\scripts\setup_env.ps1
 python .\scripts\check_qlib.py
+python .\scripts\prepare_jp_data.py --tickers-file .\docs\jp_tickers.txt --start 2015-01-01
+$env:QLIB_REPO = "C:\home\github\microsoft\qlib"
+python .\scripts\convert_csv_to_qlib.py
 python .\scripts\run_experiment.py
 ```
 

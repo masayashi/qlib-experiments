@@ -7,6 +7,41 @@
 - Qlib の公式ドキュメント上で、既定の地域設定は中国（CN）と米国（US）に対応しています。
 - 日本市場（JP）で利用する場合は、**自分でデータを用意し、Qlib形式に変換**して使う前提になります。
 
+## 日本市場（JP）で使う場合（yfinance）
+
+### 1. 銘柄リストを用意
+
+テキストファイルで銘柄コードを用意します（1行1銘柄）。
+
+例: `docs/jp_tickers.txt`
+
+```
+7203.T
+6758.T
+9984.T
+9432.T
+```
+
+### 2. yfinance で日次データを取得
+
+```powershell
+python .\scripts\prepare_jp_data.py --tickers-file .\docs\jp_tickers.txt --start 2015-01-01
+```
+
+出力先は既定で `~/.qlib/csv_data/jp_data` です。
+
+### 3. Qlib形式に変換
+
+Qlib の `dump_bin.py` を使って変換します。
+
+```powershell
+# Qlibリポジトリをクローンしている場合
+$env:QLIB_REPO = "C:\home\github\microsoft\qlib"
+python .\scripts\convert_csv_to_qlib.py
+```
+
+出力先は既定で `~/.qlib/qlib_data/jp_data` です。
+
 ## 方式A: Qlib の取得スクリプトでダウンロード
 
 Qlib 付属スクリプトでデータを取得し、Qlib形式に整形します。
@@ -39,18 +74,6 @@ python -m qlib.cli.data qlib_data --target_dir ~/.qlib/qlib_data/cn_data --regio
 # 1分足データ
 python -m qlib.cli.data qlib_data --target_dir ~/.qlib/qlib_data/cn_data_1min --region cn --interval 1min
 ```
-
-## 日本市場（JP）で使う場合
-
-Qlib は既定で CN/US の地域設定を想定しています。そのため JP を使う場合は以下が必要です。
-
-1. **日本株データの取得**
-   - 例: JPX（J-Quants API / DataCube）などの公式データソース
-2. **Qlib形式への変換**
-   - Qlib のデータ形式に合わせて `~/.qlib/qlib_data/jp_data` に保存
-3. **設定の更新**
-   - `experiments/baseline.yaml` の `qlib_data.provider_uri` を JP データのパスに変更
-   - `market` / `benchmark` / `backtest_config` を JP 市場仕様に合わせて調整
 
 ## Qlib の初期化例
 
