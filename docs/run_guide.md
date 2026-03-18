@@ -1,6 +1,6 @@
 ﻿# 実行手順
 
-以下は最初のベースライン実験を動かすための最小手順です。
+以下は JP データで Qlib を使う最小手順です。
 
 ## 1. 環境セットアップ
 
@@ -24,33 +24,33 @@ python .\scripts\convert_csv_to_qlib.py
 ```
 
 `dump_bin.py` により、`~/.qlib/qlib_data/jp_data/instruments/all.txt` が生成されます。
-この `all` を `experiments/baseline.yaml` の `instruments` に指定しています。
 
-## 3. 実験の実行
+## 3. ルールベース戦略の実行
+
+```powershell
+python .\scripts\run_rule_backtest.py
+```
+
+`results/rule_backtest_YYYYMMDD_HHMMSS/` に以下が出力されます。
+
+- `summary.md`
+- `report_normal.csv`
+- `benchmark_return.csv`
+- `excess_return_without_cost.csv`
+- `excess_return_with_cost.csv`
+
+## 4. 学習モデルベース実験の実行（必要な場合）
 
 ```powershell
 python .\scripts\run_experiment.py
-```
-
-## 4. レポート出力（可視化付き）
-
-```powershell
 python .\scripts\export_report.py
 ```
-
-`results/report_YYYYMMDD_HHMMSS/` に以下が出力されます。
-
-- `summary.md`
-- `cumulative_return.png`
-- `drawdown.png`
 
 ## 5. 結果の保存先
 
 実行結果は Qlib のワークフロー管理下に保存されます。
 通常は `~/.qlib/qlib_data/.log` や `~/.qlib/` 配下の
 実験ディレクトリに保存されます。
-
-確認方法は今後の運用に合わせて整理してください。
 
 ## 6. 記録
 

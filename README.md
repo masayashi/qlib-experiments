@@ -11,6 +11,17 @@ python .\scripts\check_qlib.py
 python .\scripts\prepare_jp_data.py --tickers-file .\docs\jp_tickers.txt --start 2015-01-01
 $env:QLIB_REPO = "C:\home\github\microsoft\qlib"
 python .\scripts\convert_csv_to_qlib.py
+```
+
+## ルールベース戦略の実行
+
+```powershell
+python .\scripts\run_rule_backtest.py
+```
+
+## 学習モデルベース実験の実行
+
+```powershell
 python .\scripts\run_experiment.py
 ```
 
@@ -20,12 +31,6 @@ python .\scripts\run_experiment.py
 - `scripts/`     : 実行スクリプト・ユーティリティ
 - `results/`     : 実行結果（ログ、指標、図など）
 - `docs/`        : メモ、参考、実験サマリ
-
-## 最初の実験
-
-- `experiments/baseline.yaml` を起点にする
-- 実験スクリプトを実行（`scripts/run_experiment.py`）
-- 出力は Qlib ワークフロー管理下に保存されます
 
 ## データ準備
 
