@@ -41,6 +41,10 @@ python .\scripts\run_experiment.py
 
 詳細は `docs/run_guide.md` を参照してください。
 
+## Agent引き継ぎルール
+
+別のAgentに引き継ぐ場合は `AGENT_HANDOFF.md` を最初に参照してください。
+
 ## メモ
 
 - 設定ファイルは必ずバージョン管理する（再現性のため）。
