@@ -26,24 +26,19 @@ python .\scripts\convert_csv_to_qlib.py
 `dump_bin.py` により、`~/.qlib/qlib_data/jp_data/instruments/all.txt` が生成されます。
 この `all` を `experiments/baseline.yaml` の `instruments` に指定しています。
 
-## 3. Qlib の初期化
-
-Qlib は `qrun` 実行時に設定ファイルの `qlib_data` を読んで初期化されます。
-
-現在の `experiments/baseline.yaml` は以下を想定しています。
-
-- `~/.qlib/qlib_data/jp_data`
-- 日本市場（JP）向けに自前で用意したデータ
-
-**注意:** Qlib の既定地域は CN/US のため、JP 利用時は
-`region` を CN/US のどちらかに置きつつ、
-バックテスト設定を JP に合わせて調整します。
-
-## 4. 実験の実行
+## 3. 実験の実行
 
 ```powershell
 python .\scripts\run_experiment.py
 ```
+
+## 4. レポート出力
+
+```powershell
+python .\scripts\export_report.py
+```
+
+`results/report_YYYYMMDD_HHMMSS/` にサマリが出力されます。
 
 ## 5. 結果の保存先
 

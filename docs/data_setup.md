@@ -42,6 +42,11 @@ python .\scripts\convert_csv_to_qlib.py
 
 出力先は既定で `~/.qlib/qlib_data/jp_data` です。
 
+## JP向けのコスト設定について
+
+`experiments/baseline.yaml` では JP 向けに**仮の取引コスト**を設定しています。
+実運用や精緻な評価を行う場合は、あなたのブローカー条件に合わせて調整してください。
+
 ## 方式A: Qlib の取得スクリプトでダウンロード
 
 Qlib 付属スクリプトでデータを取得し、Qlib形式に整形します。
