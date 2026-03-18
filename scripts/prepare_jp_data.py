@@ -9,19 +9,28 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-from typing import Iterable
 
 import pandas as pd
 import yfinance as yf
 
 
 def read_tickers(path: Path) -> list[str]:
-    lines = [line.strip() for line in path.read_text(encoding="utf-8").splitlines()]
+    lines = [line.strip().lstrip("\ufeff") for line in path.read_text(encoding="utf-8").splitlines()]
     return [line for line in lines if line and not line.startswith("#")]
 
 
-def normalize_ohlcv(df: pd.DataFrame) -> pd.DataFrame:
+def normalize_ohlcv(df: pd.DataFrame, symbol: str) -> pd.DataFrame:
     # yfinance columns: Open, High, Low, Close, Adj Close, Volume
+    if df is None or df.empty:
+        return pd.DataFrame()
+
+    if isinstance(df.columns, pd.MultiIndex):
+        # Typical format: level0=Price, level1=Ticker
+        if df.columns.nlevels >= 2 and symbol in df.columns.get_level_values(-1):
+            df = df.xs(symbol, axis=1, level=-1, drop_level=True)
+        else:
+            df.columns = df.columns.get_level_values(0)
+
     df = df.rename(
         columns={
             "Open": "open",
@@ -37,6 +46,10 @@ def normalize_ohlcv(df: pd.DataFrame) -> pd.DataFrame:
     # If Date is index, move it to a column
     if "date" not in df.columns:
         df = df.reset_index().rename(columns={"Date": "date"})
+
+    # If expected columns are missing, return empty
+    if "close" not in df.columns:
+        return pd.DataFrame()
 
     df = df.dropna(subset=["close"])
 
@@ -56,7 +69,7 @@ def download_one(symbol: str, start: str | None, end: str | None, interval: str)
     data = yf.download(symbol, start=start, end=end, interval=interval, auto_adjust=False, progress=False)
     if data is None or data.empty:
         return pd.DataFrame()
-    return normalize_ohlcv(data)
+    return normalize_ohlcv(data, symbol)
 
 
 def main() -> None:

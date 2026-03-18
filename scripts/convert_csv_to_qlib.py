@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import os
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -51,22 +52,28 @@ def main() -> None:
             "dump_bin.py not found. Clone Qlib repo and set QLIB_REPO to its path."
         )
 
+    repo_root = dump_bin.parent.parent
+
     csv_dir = Path(args.csv_dir).expanduser().resolve()
     qlib_dir = Path(args.qlib_dir).expanduser().resolve()
     qlib_dir.mkdir(parents=True, exist_ok=True)
 
     cmd = [
-        "python",
+        sys.executable,
         str(dump_bin),
         "dump_all",
-        f"--csv_path={csv_dir}",
+        f"--data_path={csv_dir}",
         f"--qlib_dir={qlib_dir}",
         "--include_fields=open,close,high,low,volume,factor",
         "--date_field_name=date",
     ]
 
+    env = os.environ.copy()
+    # Use Qlib source without compiling extensions
+    env["PYTHONPATH"] = str(repo_root)
+
     print("Running:", " ".join(cmd))
-    raise SystemExit(subprocess.call(cmd))
+    raise SystemExit(subprocess.call(cmd, env=env))
 
 
 if __name__ == "__main__":

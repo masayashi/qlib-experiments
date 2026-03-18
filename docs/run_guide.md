@@ -10,6 +10,11 @@ cd C:\home\github\qlib-experiments
 python .\scripts\check_qlib.py
 ```
 
+**補足（Windows）**
+
+- Qlib の一部は Cython 拡張を含むため、環境によっては
+  Microsoft C++ Build Tools（MSVC）が必要です。
+
 ## 2. データ準備（JP / yfinance）
 
 ```powershell

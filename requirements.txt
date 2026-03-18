@@ -1,7 +1,11 @@
 ﻿# Minimal dependencies for Qlib experiments
 # Add pinned versions once you confirm your environment
-qlib
+pyqlib
 pandas
 numpy
 scikit-learn
 yfinance
+fire
+tqdm
+loguru
+setuptools_scm
