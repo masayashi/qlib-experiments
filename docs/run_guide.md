@@ -32,7 +32,14 @@ Qlib は `qrun` 実行時に設定ファイルの `qlib_data` を読んで初期
 python .\scripts\run_experiment.py
 ```
 
-## 5. 結果の確認
+## 5. 結果の保存先
 
-出力は Qlib のワークフロー管理により保存されます。
-必要に応じて `docs/experiment_log.md` に記録してください。
+実行結果は Qlib のワークフロー管理下に保存されます。
+通常は `~/.qlib/qlib_data/.log` や `~/.qlib/` 配下の
+実験ディレクトリに保存されます。
+
+確認方法は今後の運用に合わせて整理してください。
+
+## 6. 記録
+
+実験を回したら `docs/experiment_log.md` に記録してください。
