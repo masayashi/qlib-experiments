@@ -12,7 +12,7 @@ benchmark: &benchmark 7203.T  # Set to a symbol present in your JP data
 # Data handler config
 handler_config: &handler_config
   start_time: 2015-01-05
-  end_time: 2026-03-18
+  end_time: 2026-03-17
   fit_start_time: 2015-01-05
   fit_end_time: 2020-12-31
   instruments: *market
@@ -21,7 +21,32 @@ handler_config: &handler_config
 segments: &segments
   train: [2015-01-05, 2020-12-31]
   valid: [2021-01-01, 2022-12-31]
-  test: [2023-01-01, 2026-03-18]
+  test: [2023-01-01, 2026-03-17]
+
+# Backtest settings
+exchange_kwargs: &exchange_kwargs
+  limit_threshold: 0.095  # TODO: adjust to JP market rules
+  deal_price: close
+  open_cost: 0.0005
+  close_cost: 0.0015
+  min_cost: 5
+
+port_analysis_config: &port_analysis_config
+  strategy:
+    class: TopkDropoutStrategy
+    module_path: qlib.contrib.strategy
+    kwargs:
+      topk: 50
+      n_drop: 5
+      signal:
+        - <MODEL>
+        - <DATASET>
+  backtest:
+    start_time: 2023-01-01
+    end_time: 2026-03-17
+    account: 100000000
+    benchmark: *benchmark
+    exchange_kwargs: *exchange_kwargs
 
 # Main task
 
@@ -52,3 +77,7 @@ task:
     - class: SignalRecord
       module_path: qlib.workflow.record_temp
       kwargs: {}
+    - class: PortAnaRecord
+      module_path: qlib.workflow.record_temp
+      kwargs:
+        config: *port_analysis_config
