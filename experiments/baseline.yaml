@@ -1,0 +1,17 @@
+﻿# Baseline experiment config (placeholder)
+# Replace with Qlib-compatible config when you decide the task.
+experiment:
+  name: baseline
+  description: initial baseline experiment
+
+paths:
+  data_dir: data/  # store datasets outside git, or use a separate storage
+
+training:
+  model: your_model_name
+  params:
+    key: value
+
+evaluation:
+  metrics:
+    - metric_name

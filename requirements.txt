@@ -1,0 +1,6 @@
+﻿# Minimal dependencies for Qlib experiments
+# Add pinned versions once you confirm your environment
+qlib
+pandas
+numpy
+scikit-learn
