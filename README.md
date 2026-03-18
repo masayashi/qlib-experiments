@@ -8,6 +8,7 @@
 cd C:\home\github\qlib-experiments
 .\scripts\setup_env.ps1
 python .\scripts\check_qlib.py
+python .\scripts\run_experiment.py
 ```
 
 ## ディレクトリ構成
@@ -20,12 +21,16 @@ python .\scripts\check_qlib.py
 ## 最初の実験
 
 - `experiments/baseline.yaml` を起点にする
-- 実験スクリプトを実行（`scripts/run_experiment.py` は現在プレースホルダ）
-- 出力は `results/YYYYMMDD_expid/` に保存する
+- 実験スクリプトを実行（`scripts/run_experiment.py`）
+- 出力は Qlib ワークフロー管理下に保存されます
 
 ## データ準備
 
 データの準備方法は `docs/data_setup.md` にまとめています。
+
+## 実行手順
+
+詳細は `docs/run_guide.md` を参照してください。
 
 ## メモ
 
