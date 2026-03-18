@@ -23,6 +23,10 @@ python .\scripts\check_qlib.py
 - 実験スクリプトを実行（`scripts/run_experiment.py` は現在プレースホルダ）
 - 出力は `results/YYYYMMDD_expid/` に保存する
 
+## データ準備
+
+データの準備方法は `docs/data_setup.md` にまとめています。
+
 ## メモ
 
 - 設定ファイルは必ずバージョン管理する（再現性のため）。
